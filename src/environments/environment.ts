@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:8080',
+    apiUrl: 'http://anuncios.brazilsouth.cloudapp.azure.com/api',
     appName: 'Announcements System',
     features: {
         darkMode: true,
