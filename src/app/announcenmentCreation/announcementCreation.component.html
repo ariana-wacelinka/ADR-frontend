@@ -1,0 +1,87 @@
+<app-drawer>
+    <ng-container main-content>
+        <div id="container">
+            @if (encontrado) {
+            <div class="form-container animate-fade-in-up">
+                <div class="form-header">
+                    <h1 class="form-title">{{ isEditMode ? 'Editar Anuncio' : 'Crear Anuncio' }}</h1>
+                    <p class="form-subtitle">
+                        {{ isEditMode ? 'Actualiza la información del anuncio' : 'Comparte información importante con la
+                        comunidad' }}
+                    </p>
+                </div>
+
+                <div class="form-content">
+                    <form [formGroup]="form" class="example-form">
+                        <div class="form-field">
+                            <label class="field-label">Título *</label>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Ingresa el título del anuncio</mat-label>
+                                <input matInput formControlName="title" maxlength="50"
+                                    placeholder="Ej: Reunión importante">
+                                <mat-hint align="end">{{ form.get('title')?.value?.length || 0 }} / 50</mat-hint>
+                                @if (form.get('title')?.invalid && form.get('title')?.touched) {
+                                <mat-error>El título es requerido</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-field description-field">
+                            <label class="field-label">Descripción *</label>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Describe el contenido del anuncio</mat-label>
+                                <textarea matInput formControlName="description" maxlength="500"
+                                    placeholder="Proporciona todos los detalles importantes..."></textarea>
+                                <mat-hint align="end">{{ form.get('description')?.value?.length || 0 }} / 500</mat-hint>
+                                @if (form.get('description')?.invalid && form.get('description')?.touched) {
+                                <mat-error>La descripción es requerida</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-field date-field">
+                            <label class="field-label">Fecha *</label>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Selecciona una fecha</mat-label>
+                                <input matInput [matDatepicker]="picker1" formControlName="date" readonly>
+                                <mat-hint>Selecciona la fecha del anuncio</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                                @if (form.get('date')?.invalid && form.get('date')?.touched) {
+                                <mat-error>La fecha es requerida</mat-error>
+                                }
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="action-button secondary" (click)="volver()">
+                                <mat-icon>arrow_back</mat-icon>
+                                Cancelar
+                            </button>
+                            <button type="submit" class="action-button primary" [disabled]="form.invalid"
+                                (click)="onSubmit()">
+                                <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+                                {{ isEditMode ? 'Actualizar Anuncio' : 'Crear Anuncio' }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            } @else {
+            <div class="form-container animate-fade-in-up">
+                <div class="not-found-content">
+                    <mat-icon class="not-found-icon">search_off</mat-icon>
+                    <h2 class="not-found-title">Anuncio No Encontrado</h2>
+                    <p class="not-found-message">
+                        El anuncio que buscas no existe o ha sido eliminado.
+                    </p>
+                    <button type="button" class="action-button primary" (click)="volver()">
+                        <mat-icon>arrow_back</mat-icon>
+                        Volver a Anuncios
+                    </button>
+                </div>
+            </div>
+            }
+        </div>
+    </ng-container>
+</app-drawer>

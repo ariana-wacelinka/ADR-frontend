@@ -1,0 +1,57 @@
+<app-drawer>
+    <ng-container main-content>
+        <div id="container">
+            <div class="padre animate-fade-in-up">
+                <h1 class="principal">Anuncios</h1>
+                <p class="subtitle">Gestiona y visualiza todos los anuncios de la plataforma</p>
+
+                <div class="actions-header">
+                    <h2 class="section-title">Lista de Anuncios</h2>
+                    <button class="create-button" routerLink="/create-announcement">
+                        <mat-icon>add</mat-icon>
+                        Crear Anuncio
+                    </button>
+                </div>
+
+                <div class="announcements-grid">
+                    @if(announcements.length === 0) {
+                    <div class="empty-state">
+                        <mat-icon class="empty-icon">announcement</mat-icon>
+                        <h3 class="empty-title">No hay anuncios aún</h3>
+                        <p class="empty-description">
+                            Parece que aún no se han creado anuncios. ¡Comienza creando tu primer anuncio!
+                        </p>
+                        <button class="empty-action" routerLink="/create-announcement">
+                            Crear Primer Anuncio
+                        </button>
+                    </div>
+                    } @else {
+                    @for (announcement of announcements; track announcement.id) {
+                    <div class="announcement-card glass-card">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ announcement.title }}</h3>
+                            <span class="card-date">{{ announcement.date }}</span>
+                        </div>
+
+                        <p class="card-description">{{ announcement.description }}</p>
+
+                        <div class="card-actions">
+                            <button class="action-button edit" (click)="updateAnnouncement(announcement.id)"
+                                aria-label="Editar anuncio">
+                                <mat-icon>edit</mat-icon>
+                                Editar
+                            </button>
+                            <button class="action-button delete" (click)="deleteAnnouncement(announcement.id)"
+                                aria-label="Eliminar anuncio">
+                                <mat-icon>delete</mat-icon>
+                                Eliminar
+                            </button>
+                        </div>
+                    </div>
+                    }
+                    }
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</app-drawer>

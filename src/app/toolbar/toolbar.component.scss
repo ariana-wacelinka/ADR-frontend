@@ -1,0 +1,258 @@
+mat-toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 60px;
+    margin: 15px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: calc(100% - 30px);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 25px;
+        background: linear-gradient(135deg,
+                rgba(102, 126, 234, 0.2) 0%,
+                rgba(118, 75, 162, 0.2) 50%,
+                rgba(255, 119, 198, 0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+}
+
+.toolbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    &:hover {
+        transform: scale(1.08);
+        color: #667eea;
+        filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+    }
+
+    .brand-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff77c6 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        position: relative;
+        box-shadow:
+            0 8px 25px rgba(102, 126, 234, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #ff77c6, #667eea);
+            border-radius: 17px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover::before {
+            opacity: 1;
+            animation: brandGlow 2s ease-in-out infinite alternate;
+        }
+    }
+
+    .brand-text {
+        background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #ff77c6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+}
+
+@keyframes brandGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 30px rgba(255, 119, 198, 0.7);
+    }
+}
+
+.toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .toolbar-button {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 14px;
+        padding: 5px 10px;
+        color: #E8E8E8;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(15px);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+
+            &::before {
+                left: 100%;
+            }
+        }
+
+        &.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff77c6 100%);
+            border: none;
+            color: white;
+            box-shadow:
+                0 8px 25px rgba(102, 126, 234, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+            &:hover {
+                transform: translateY(0px);
+                box-shadow:
+                    0 12px 35px rgba(102, 126, 234, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                filter: brightness(1.1);
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    mat-toolbar {
+        margin: 15px;
+        padding: 0 20px;
+        height: 60px;
+        width: calc(100% - 30px);
+        border-radius: 20px;
+    }
+
+    .toolbar-brand {
+        font-size: 18px;
+        gap: 10px;
+
+        .brand-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+
+        .brand-text {
+            display: none;
+        }
+    }
+
+    .toolbar-actions {
+        gap: 10px;
+
+        .toolbar-button {
+            padding: 10px 16px;
+            font-size: 12px;
+
+            span {
+                display: none;
+            }
+
+            &.primary span {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    mat-toolbar {
+        margin: 10px;
+        padding: 0 15px;
+        height: 55px;
+        width: calc(100% - 20px);
+    }
+
+    .toolbar-brand {
+        font-size: 16px;
+
+        .brand-icon {
+            width: 28px;
+            height: 28px;
+            font-size: 12px;
+        }
+    }
+
+    .toolbar-actions {
+        gap: 8px;
+
+        .toolbar-button {
+            padding: 8px 12px;
+
+            mat-icon {
+                font-size: 20px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

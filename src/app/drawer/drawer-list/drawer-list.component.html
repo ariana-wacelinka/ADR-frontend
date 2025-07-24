@@ -1,0 +1,21 @@
+<div class="drawer-menu">
+  @for (element of appLinks; track element.id) {
+  <a [href]="element.link" class="menu-item">
+    <div class="menu-item-content">
+      <mat-icon class="menu-icon">announcement</mat-icon>
+      <span class="menu-title">{{ element.name }}</span>
+    </div>
+    <div class="menu-hover-effect"></div>
+  </a>
+  }
+
+  <div class="drawer-footer">
+    <div class="app-info">
+      <mat-icon class="info-icon">info</mat-icon>
+      <div class="info-text">
+        <span class="app-name">Announcements</span>
+        <span class="app-version">v1.0.0</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,387 @@
+app-drawer {
+  background-color: transparent;
+}
+
+ng-container {
+  background-color: transparent;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+  padding: 80px 15px 30px 15px;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 36px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .form-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: #ffffff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  .form-subtitle {
+    color: rgba(232, 232, 232, 0.7);
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.form-content {
+  .example-form {
+    width: 100%;
+  }
+
+  .form-field {
+    margin-bottom: 28px;
+    position: relative;
+
+    .field-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #E8E8E8;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    mat-form-field {
+      width: 100%;
+
+      &.mat-mdc-form-field {
+        .mat-mdc-text-field-wrapper {
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 12px;
+          backdrop-filter: blur(10px);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+          }
+
+          &.mdc-text-field--focused {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: rgba(255, 255, 255, 0.12);
+          }
+        }
+
+        .mat-mdc-form-field-subscript-wrapper {
+          margin-top: 8px;
+        }
+
+        input,
+        textarea {
+          color: #E8E8E8;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+
+          &::placeholder {
+            color: rgba(232, 232, 232, 0.5);
+          }
+        }
+
+        .mat-mdc-form-field-label {
+          color: rgba(232, 232, 232, 0.7);
+          font-family: 'Inter', sans-serif;
+          transition: color 0.2s;
+        }
+
+        .mdc-floating-label--float-above {
+          color: #fff !important;
+          text-shadow: 0 2px 12px rgba(102, 126, 234, 0.25), 0 1px 6px rgba(0, 0, 0, 0.18);
+          font-weight: 600;
+        }
+
+        .mdc-text-field--focused .mdc-notched-outline {
+          border-color: #fff !important;
+          box-shadow: 0 0 0 2px #667eea55, 0 0 0 6px #fff2;
+        }
+
+        .mat-mdc-form-field.mat-accent .mdc-floating-label--float-above,
+        .mat-mdc-form-field.mat-warn .mdc-floating-label--float-above {
+          color: #ef4444 !important;
+        }
+
+        .mat-mdc-form-field-error {
+          color: #ef4444;
+          font-size: 12px;
+          font-family: 'Inter', sans-serif;
+        }
+      }
+    }
+
+    &.description-field {
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+    }
+
+    &.date-field {
+      .mat-datepicker-toggle {
+        color: rgba(232, 232, 232, 0.7);
+
+        &:hover {
+          color: #667eea;
+        }
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: right;
+
+    .action-button {
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      &:active::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      &.primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          transform: none;
+          box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+        }
+      }
+
+      &.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #E8E8E8;
+        backdrop-filter: blur(10px);
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 255, 255, 0.3);
+          transform: translateY(-1px);
+        }
+      }
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        line-height: 1;
+        vertical-align: middle;
+        margin-right: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+
+      .action-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.success-message {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  color: #22c55e;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  color: #ef4444;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.not-found-content {
+  text-align: center;
+  padding: 40px 20px;
+
+  .not-found-icon {
+    font-size: 80px;
+    width: 80px;
+    height: 80px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 24px;
+  }
+
+  .not-found-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .not-found-message {
+    color: rgba(232, 232, 232, 0.7);
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  #container {
+    padding: 20px 10px;
+  }
+
+  .form-container {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+
+  .form-header .form-title {
+    font-size: 2rem;
+  }
+
+  .form-content .form-field {
+    margin-bottom: 24px;
+  }
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+  color: #fff !important;
+  opacity: 1 !important;
+  font-size: 22px !important;
+  transition: color 0.2s;
+}
+
+::ng-deep .mat-datepicker-toggle:hover .mat-datepicker-toggle-default-icon {
+  color: #e8e8e8 !important;
+}

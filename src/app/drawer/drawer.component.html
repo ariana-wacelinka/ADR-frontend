@@ -1,0 +1,12 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" (opened)="events.push()" (closed)="events.push()">
+    <app-drawer-list></app-drawer-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-toolbar>
+      <!-- Sin botón hamburguesa -->
+    </app-toolbar>
+    <ng-content select="[main-content]"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
